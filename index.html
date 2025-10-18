@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FM Radio Player</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>🌐 FM Radio Player</h1>
+
+  <div class="controls">
+    <select id="countrySelect">
+      <option>United States</option>
+      <option>United Kingdom</option>
+      <option>Nigeria</option>
+      <option>Canada</option>
+      <option>India</option>
+    </select>
+    <input type="text" id="searchInput" placeholder="Search stations...">
+  </div>
+
+  <div id="stationList" class="station-list"></div>
+
+  <div class="player">
+    <p id="nowPlaying">🎵 Now Playing: None</p>
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
+    <audio id="audioPlayer" controls></audio>
+  </div>
+
+  <div class="toolbar">
+    <button id="favoritesBtn">⭐ Favorites</button>
+    <button id="exportBtn">💾 Export</button>
+    <input type="file" id="importBtn" accept=".json">
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
