@@ -1,8 +1,8 @@
 // =====================
-// FM Radio Player App
+// FM Radio Player App (CORS FIXED VERSION)
 // =====================
 
-const apiBase = "https://corsproxy.io/?https://de1.api.radio-browser.info/json/stations/bycountry/";
+const apiBase = "https://api.allorigins.win/get?url=https://de1.api.radio-browser.info/json/stations/bycountry/";
 
 const countrySelect = document.getElementById("countrySelect");
 const stationList = document.getElementById("stationList");
@@ -23,7 +23,9 @@ async function fetchStations(country) {
   try {
     const response = await fetch(`${apiBase}${encodeURIComponent(country)}`);
     const data = await response.json();
-    stations = data.filter(station => station.url_resolved.startsWith("https://"));
+    const stationsData = JSON.parse(data.contents);
+
+    stations = stationsData.filter(station => station.url_resolved.startsWith("https://"));
     renderStations(stations);
   } catch (err) {
     stationList.innerHTML = `<p class="error">❌ Unable to load stations. Please try again later.</p>`;
